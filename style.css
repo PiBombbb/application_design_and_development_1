@@ -1,5 +1,5 @@
 /* Target the header element */
-h1.fancy_header {
+header.fancy_header {
     background-color: #00ffff; /* Fallback static color */
     padding: 20px;
     text-align: center;
