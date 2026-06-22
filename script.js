@@ -21,9 +21,11 @@ fetchNasaBtn.addEventListener('click', () => {
     const minLon = document.getElementById('minLon').value;
     const maxLat = document.getElementById('maxLat').value;
     const maxLon = document.getElementById('maxLon').value;
-
-    const final_image_url = `https://gibs.earthdata.nasa.gov/wms/epsg4326/best/wms.cgi?BBOX=${minLat},${minLon},${maxLat},${maxLon}&REQUEST=GetMap&FORMAT=image/jpeg&VERSION=1.3.0&LAYERS=BlueMarble_ShadedRelief_Bathymetry&WIDTH=600&HEIGHT=300&CRS=EPSG:4326`;
-
+    const latDiff = maxLat - minLat;
+    const lonDiff = maxLon - minLon;
+    const imageHeight = 400;
+    const imageWidth = Math.round(imageHeight * (lonDiff / latDiff));
+    const final_image_url = `https://gibs.earthdata.nasa.gov/wms/epsg4326/best/wms.cgi?BBOX=${minLat},${minLon},${maxLat},${maxLon}&REQUEST=GetMap&FORMAT=image/jpeg&VERSION=1.3.0&LAYERS=BlueMarble_ShadedRelief_Bathymetry&WIDTH=${imageWidth}&HEIGHT=${imageHeight}&CRS=EPSG:4326`;
     nasa_display.src = final_image_url;
     nasa_display.style.display = "block";
     debugLink.href = final_image_url;
