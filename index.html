@@ -32,17 +32,17 @@
                 <label>Min Lat: <input type="number" id="minLat" value="5" min="-90" max="90"></label>
                 <label>Min Lon: <input type="number" id="minLon" value="97" min="-180" max="180"></label>
                 <br><br>
-                <label>Max Lat: <input type="number" id="maxLat" value="90" min="21" max="90"></label>
-                <label>Max Lon: <input type="number" id="maxLon" value="180" min="106" max="180"></label>
+                <label>Max Lat: <input type="number" id="maxLat" value="21" min="-90" max="90"></label>
+                <label>Max Lon: <input type="number" id="maxLon" value="106" min="-180" max="180"></label>
             </div>
     
-            <button id="fetchNasaBtn" class="btn">Generate Map</button>
+            <button id="fetch_nasa" class="btn">Generate Map</button>
     
             <div style="margin-top: 20px;">
                 <img id="nasa_display" src="" alt="NASA Blue Marble Map" style="width: auto; height: 400px; display: none; border: 2px solid #ccc;">
             </div>
             <div style="margin-top: 15px;">
-                <a id="debugLink" target="_blank" style="display: none; color: #e74c3c; font-family: monospace; word-break: break-all;"></a>
+                <a id="debug_link" target="_blank" style="display: none; color: #e74c3c; font-family: monospace; word-break: break-all;"></a>
             </div>
             <hr>
         </main>

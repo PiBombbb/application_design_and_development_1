@@ -2,9 +2,9 @@
 const modal = document.getElementById('simon_anim');
 const openButton = document.getElementById('simon_open');
 const closeButton = document.getElementById('simon_close');
-const fetchNasaBtn = document.getElementById('fetchNasaBtn');
+const fetch_nasa = document.getElementById('fetch_nasa');
 const nasa_display = document.getElementById('nasa_display');
-const debugLink = document.getElementById('debugLink');
+const debug_link = document.getElementById('debug_link');
 
 
 // 2. Tell the open button to listen for a click and open the modal
@@ -16,7 +16,7 @@ openButton.addEventListener('click', () => {
 closeButton.addEventListener('click', () => {
     modal.close();
 });
-fetchNasaBtn.addEventListener('click', () => {
+fetch_nasa.addEventListener('click', () => {
     const minLat = document.getElementById('minLat').value;
     const minLon = document.getElementById('minLon').value;
     const maxLat = document.getElementById('maxLat').value;
@@ -28,7 +28,7 @@ fetchNasaBtn.addEventListener('click', () => {
     const final_image_url = `https://gibs.earthdata.nasa.gov/wms/epsg4326/best/wms.cgi?BBOX=${minLat},${minLon},${maxLat},${maxLon}&REQUEST=GetMap&FORMAT=image/jpeg&VERSION=1.3.0&LAYERS=BlueMarble_ShadedRelief_Bathymetry&WIDTH=${imageWidth}&HEIGHT=${imageHeight}&CRS=EPSG:4326`;
     nasa_display.src = final_image_url;
     nasa_display.style.display = "block";
-    debugLink.href = final_image_url;
-    debugLink.textContent = `Debug URL: ${final_image_url}`;
-    debugLink.style.display = "inline-block";
+    debug_link.href = final_image_url;
+    debug_link.textContent = `Debug URL: ${final_image_url}`;
+    debug_link.style.display = "inline-block";
 });
