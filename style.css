@@ -1,14 +1,43 @@
-/* Target the header element */
+
 header.fancy_header {
     background-color: #00ffff; /* Fallback static color */
     padding: 20px;
     text-align: center;
     color: black;
     animation: color_change 10s infinite alternate;
-    font-family: cursive, fantasy, serif;
+    font-family: serif;
+}
+.btn {
+    background-color: #00bb00; /* Your base color */
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
-/* Define the animation rules */
+.btn:hover {
+    background-color: #00ee00;
+    transform: scale(1.05);
+}
+
+.btn_close {
+    background-color: #aa0000; /* Your base color */
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.btn_close:hover {
+    background-color: #ff0000;
+    transform: scale(1.05);
+}
 @keyframes color_change {
     0% {
         background-color: #00ffff;
