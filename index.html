@@ -15,7 +15,7 @@
             <p>สวัสดีครับผม จิรภัทร เกียรติชัยพิพัฒน์ เลขที่ 10 ห้อง 6/3 เลขประจำตัว 09115 ไม่รู้จะเอาอะไรใส่เว็บดี</p>
             <hr>
             <p>I sometimes like to encode videos! I use ffmpeg to turn videos into more efficient codecs, allowing for smaller file sizes.</p>
-            <img src="https://avatars.githubusercontent.com/u/729418" alt="FFmpeg logo">
+            <img src="https://avatars.githubusercontent.com/u/729418" alt="FFmpeg logo" width="100" height="auto">
             <button id="simon_open" class="btn">svt-av1 demonstration via AVIF file format</button>
             <dialog id="simon_anim">
                 <h3>This works on Discord and has a size of 3.62MB!</h3>
@@ -24,7 +24,26 @@
                 <button id="simon_close" class="btn_close">Close</button>
             </dialog>
             <hr>
-
+            <h2>NASA Blue Marble Imagery Viewer</h2>
+    
+            <div class="bbox-inputs" style="margin-bottom: 15px;">
+                <h3>Bounding Box Coordinates (WGS84)</h3>
+        
+                <label>Min Lat: <input type="number" id="minLat" value="-90" min="-90" max="90"></label>
+                <label>Min Lon: <input type="number" id="minLon" value="-180" min="-180" max="180"></label>
+                <br><br>
+                <label>Max Lat: <input type="number" id="maxLat" value="90" min="-90" max="90"></label>
+                <label>Max Lon: <input type="number" id="maxLon" value="180" min="-180" max="180"></label>
+            </div>
+    
+            <button id="fetchNasaBtn" class="btn">Generate Map</button>
+    
+            <div style="margin-top: 20px;">
+                <img id="nasa_display" 
+                    src="" 
+                    alt="NASA Blue Marble Map" 
+                    style="width: 600px; height: 300px; object-fit: cover; display: none; border: 2px solid #ccc;">
+            </div>
             <hr>
         </main>
         <footer>
