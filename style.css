@@ -7,6 +7,9 @@ header.fancy_header {
     animation: color_change 10s infinite alternate;
     font-family: serif;
 }
+p {
+    font-family: monospace;
+}
 .btn {
     background-color: #00bb00; /* Your base color */
     color: black;
