@@ -4,6 +4,7 @@ const openButton = document.getElementById('simon_open');
 const closeButton = document.getElementById('simon_close');
 const fetchNasaBtn = document.getElementById('fetchNasaBtn');
 const nasa_display = document.getElementById('nasa_display');
+const debugLink = document.getElementById('debugLink');
 
 
 // 2. Tell the open button to listen for a click and open the modal
@@ -25,4 +26,7 @@ fetchNasaBtn.addEventListener('click', () => {
 
     nasa_display.src = final_image_url;
     nasa_display.style.display = "block";
+    debugLink.href = final_image_url;
+    debugLink.textContent = `Debug URL: ${final_image_url}`;
+    debugLink.style.display = "inline-block";
 });
