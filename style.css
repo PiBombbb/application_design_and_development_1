@@ -1,11 +1,11 @@
 /* Target the header element */
-header.fancy_header {
+h1.fancy_header {
     background-color: #00ffff; /* Fallback static color */
     padding: 20px;
     text-align: center;
-    color: white;
-    
+    color: black;
     animation: color_change 10s infinite alternate;
+    font-family: cursive, fantasy, serif;
 }
 
 /* Define the animation rules */
