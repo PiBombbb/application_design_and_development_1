@@ -5,10 +5,10 @@ header.fancy_header {
     text-align: center;
     color: black;
     animation: color_change 10s infinite alternate;
-    font-family: serif;
+    font-family: serif monospace;
 }
 p {
-    font-family: monospace;
+    font-family: serif monospace;
 }
 .btn {
     background-color: #00bb00; /* Your base color */
@@ -25,7 +25,9 @@ p {
     background-color: #00ee00;
     transform: scale(1.05);
 }
-
+img.ffmpeg_logo:hover {
+    transform: scale(1.05);
+}
 .btn_close {
     background-color: #aa0000; /* Your base color */
     color: black;

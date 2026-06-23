@@ -1,19 +1,17 @@
 // 1. Grab the HTML elements and store them in variables
 const modal = document.getElementById('simon_anim');
-const openButton = document.getElementById('simon_open');
-const closeButton = document.getElementById('simon_close');
+const open_button = document.getElementById('simon_open');
+const close_button = document.getElementById('simon_close');
 const fetch_nasa = document.getElementById('fetch_nasa');
 const nasa_display = document.getElementById('nasa_display');
 const debug_link = document.getElementById('debug_link');
 
 
-// 2. Tell the open button to listen for a click and open the modal
-openButton.addEventListener('click', () => {
+open_button.addEventListener('click', () => {
     modal.showModal();
 });
 
-// 3. Tell the close button to listen for a click and close the modal
-closeButton.addEventListener('click', () => {
+close_button.addEventListener('click', () => {
     modal.close();
 });
 fetch_nasa.addEventListener('click', () => {
@@ -29,6 +27,6 @@ fetch_nasa.addEventListener('click', () => {
     nasa_display.src = final_image_url;
     nasa_display.style.display = "block";
     debug_link.href = final_image_url;
-    debug_link.textContent = `Debug URL: ${final_image_url}`;
+    debug_link.textContent = `URL to Image: ${final_image_url}`;
     debug_link.style.display = "inline-block";
 });
