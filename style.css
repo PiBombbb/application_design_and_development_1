@@ -1,19 +1,49 @@
-
-header.fancy_header {
-    background-color: #00ffff; /* Fallback static color */
-    padding: 20px;
-    text-align: center;
-    color: black;
-    animation: color_change 10s infinite alternate;
-    font-family: serif monospace;
+html {
+    background-color: black;
+}
+dialog {
+    background-color: black;
+    border-radius: 5px;
+    border-color: lavenderblush;
 }
 p {
     font-family: serif monospace;
+    color: oldlace;
+}
+span {
+    font-family: serif monospace;
+    color: oldlace;
+}
+div {
+    font-family: serif monospace;
+    color: oldlace;
+}
+.bold_white {
+    font-family: serif monospace;
+    color: oldlace;
+    font-weight: bold;
+}
+a.tiny_link {
+    text-align: center;
+    font-size: xx-small;
+}
+header.fancy_header {
+    background-color: #0038A8;
+    padding: 20px;
+    text-align: center;
+    color: oldlace;
+    animation: color_change 15s infinite alternate;
+    font-family: serif monospace;
+}
+.flex-container {
+  display: flex;
+  align-items: center;
 }
 .btn {
-    background-color: #00bb00; /* Your base color */
+    background-color: aqua; 
     color: black;
     border: none;
+    margin-left: 4em;
     padding: 10px 20px;
     font-size: 16px;
     border-radius: 5px;
@@ -22,14 +52,14 @@ p {
 }
 
 .btn:hover {
-    background-color: #00ee00;
+    background-color: aquamarine;
     transform: scale(1.05);
 }
 img.ffmpeg_logo:hover {
     transform: scale(1.05);
 }
 .btn_close {
-    background-color: #aa0000; /* Your base color */
+    background-color: crimson;
     color: black;
     border: none;
     padding: 10px 20px;
@@ -38,16 +68,25 @@ img.ffmpeg_logo:hover {
     cursor: pointer;
     transition: background-color 0.2s ease, transform 0.2s ease;
 }
-
+.tabbed {
+    padding-left: 2em;
+}
+.tabbed_large {
+    padding-left: 3em;
+    margin-right: 2em;
+    color: ivory;
+    font-weight: bold;
+    font-size: larger;
+}
 .btn_close:hover {
-    background-color: #ff0000;
-    transform: scale(1.05);
+    background-color: lightcoral;
+    transform: scale(1.1);
 }
 @keyframes color_change {
     0% {
-        background-color: #00ffff;
+        background-color: #0038A8;
     }
     100% {
-        background-color: #00ff00;
+        background-color: #D60270;
     }
 }

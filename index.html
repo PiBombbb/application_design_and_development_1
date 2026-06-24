@@ -4,25 +4,66 @@
         <meta charset="UTF-8">
         <title>Jirapat Kiatchaipipat's Website</title>
         <link rel="stylesheet" href="style.css">
-        <link rel="icon" type="image/x-icon" href="test_icon_elf.webp">
+        <link rel="icon" type="image/x-icon" href="icon.webp">
     </head>
     <body>
         <header class="fancy_header">
             <h1>Welcome to Jirapat Kiatchaipipat's website</h1>
-            <h1>showing video and audio encoding via ffmpeg</h1>
+            <h1>showing video and audio encoding via FFmpeg</h1>
         </header>
         <main>
-            <p>สวัสดีครับผม จิรภัทร เกียรติชัยพิพัฒน์ เลขที่ 10 ห้อง 6/3 เลขประจำตัว 09115 บางทีในเวลาว่างผมจะนำไฟล์ video หรือ audio มา encode ผ่านโปรแกรม ffmpeg</p>
-            <hr>
-            <p>ตัวอย่างการ Encode video รูปแบบคล้าย gif โดยใช้ libsvtav1 และ libwebp_anim ซึ่งใหม่กว่า</p>
-            <a href="https://www.gyan.dev/ffmpeg/">
-                <img src="https://avatars.githubusercontent.com/u/729418" alt="FFmpeg logo" width="100" height="auto" class="ffmpeg_logo">
-            </a>
             <br>
-            <button id="simon_open" class="btn">svt-av1 demonstration via AVIF file format</button>
+            <div>สวัสดีครับ ผม จิรภัทร เกียรติชัยพิพัฒน์ เลขที่ 10 ห้อง 6/3 เลขประจำตัว 09115 บางทีในเวลาว่างผมจะนำไฟล์ video หรือ audio มา encode ผ่านโปรแกรม ffmpeg</div>
+            <hr>
+            <div class="flex-container">
+                <a href="https://www.gyan.dev/ffmpeg/" class="tiny_link">
+                    <img src="https://avatars.githubusercontent.com/u/729418" alt="FFmpeg logo" width="100" height=auto class="ffmpeg_logo">
+                    <br>
+                    www.gyan.dev/ffmpeg/
+                </a>
+                <p>
+                    ไฟล์สื่อต่างๆ หลายรูปแบบ เช่น .mp4 .mov .mkv .webm ไม่ว่าจะเป็นวีดิโอ หรือไฟล์เสียง ไฟล์เหล่านี้เป็นไฟล์บรรจุ โดยนามสกุลไฟล์เหล่านี้ไม่ได้ควบคุมวิธีการบีบอัดของข้อมูลด้านใน ซึ่งวีดิโอกับเสียงจะเก็บแยกกันเป็น stream
+                    รูปแบบการบีบอัดไฟล์สำหรับบรรจุ stream ต่างๆ คือ codec โดยสำหรับวีดิโออาจเป็น H.264 H.265 VP9 AV1 และสำหรับเสียงอาจเป็น FLAC MP3 AAC Vorbis Opus โดยแต่ละ codec มีความสามารถต่างกัน ทั่วไป codec ที่
+                    ใหม่กว่าจะมีประสิทธิภาพสูงกว่า แต่อาจมี support น้อยกว่า นอกจากนี้ยังมีไฟล์ที่เก็บ stream วีดิโอเท่านั้นเช่น .gif หรือ .webp สำหรับ animation 
+                    <br>
+                    FFmpeg เป็นโปรแกรมที่สามารถเปิดไฟล์เหล่านี้และนำข้อมูลบันทึกลงใน codec อื่นได้ และยังมีความสามารถการ edit เสียงและวีดิโออื่นๆ อีกด้วย ทำให้เป็นโปรแกรมที่เหมาะกับการใช้เปลี่ยน codec ของสื่อต่างๆ ให้
+                    เป็น codec ที่ทันสมัยมากขึ้น และประหยัดพื้นที่ในการเก็บไฟล์
+                </p>
+            </div>
+            <hr>
+            <p>ตัวอย่างการ Encode video รูปแบบ animation ยาว 12 วินาที โดยเทียบ GIF, webp และ AVIF (เรียงจากเก่าไปใหม่) ทั้ง 3 format นี้สามารถใช้บน Discord ได้ - กดปุ่มเพื่อดู</p>
+            <button id="gif_open" class="btn">GIF file - 426x240 - 12fps - 4.83mb</button>
+            <dialog id="heolstor_gif">
+                <h2 class="bold_white">GIF file - 426x240 - 12fps - 4.83mb</h2>
+                <img src="anim/heolstor.gif" alt="Showcase of GIF with Heolstor" width="426">
+                <br>
+                <br>
+                <button id="gif_close" class="btn_close">Close</button>
+            </dialog>
+            <br><br>
+            <button id="webp_open" class="btn">WEBP file - 640x360 - 18fps - 3.27mb</button>
+            <dialog id="heolstor_webp">
+                <h2 class="bold_white">WEBP file - 640x360 - 18fps - 3.27mb</h2>
+                <img src="anim/heolstor.webp" alt="Showcase of WEBP with Heolstor" width="640">
+                <br>
+                <br>
+                <button id="webp_close" class="btn_close">Close</button>
+            </dialog>
+            <br><br>
+            <button id="avif_open" class="btn">AVIF file - 1920x1080 - 60fps - 2.75mb</button>
+            <dialog id="heolstor_avif">
+                <h2 class="bold_white">AVIF file - 1920x1080 - 60fps - 2.75mb</h2>
+                <img src="anim/heolstor.avif" alt="Showcase of AVIF with Heolstor" width="960" height="auto">
+                <br>
+                <br>
+                <button id="avif_close" class="btn_close">Close</button>
+            </dialog>
+            <br><br>
+            <p>ตัวอย่างเพิ่มเติม AVIF ยาว 19.25 วินาที</p>
+            <button id="simon_open" class="btn">AVIF file - 1280x720 - 60fps - 3.62mb</button>
             <dialog id="simon_anim">
-                <h3>This works on Discord and has a size of 3.62MB!</h3>
-                <img src="simon_avif_tiny.avif" alt="Simon the Divergent Star" width="854">
+                <h2 class="bold_white">AVIF file - 1280x720 - 60fps - 3.62mb</h2>
+                <img src="anim/simon_avif_tiny.avif" alt="Simon the Divergent Star" width="854">
                 <br>
                 <span>Taken from </span>
                 <a href="https://youtu.be/hmmgy8jz7TY">https://youtu.be/hmmgy8jz7TY</a>
@@ -31,31 +72,35 @@
                 <button id="simon_close" class="btn_close">Close</button>
             </dialog>
             <hr>
-            <p>การแสดงไฟล์เสียงด้วย mp3 และ Opus เพื่อเทียบคุณภาพ โดย Opus มี bitrate ประมาณ 96kb/s</p>
-            <p>Caligo, Miasma of Night</p>
-            <span style="padding-left: 2em;">mp3</span>
+            <p>การแสดงไฟล์เสียงด้วย mp3 และ Opus เพื่อเทียบคุณภาพ โดยมี bitrate ประมาณ 80kb/s</p>
+            
+            <h2 class="bold_white">Fulghor, Champion of Nightglow</h2>
+            <span class="tabbed_large">mp3</span>
             <audio controls>
-                <source src="caligo2.mp3" type="audio/mpeg">
+                <source src="audio/fulghor3.mp3" type="audio/mpeg">
                 Your browser does not support the audio element
             </audio>
             <br>
-            <span style="padding-left: 2em;">opus</span>
+            <span class="tabbed_large">opus</span>
             <audio controls>
-                <source src="caligo2.opus" type="audio/ogg; codecs=opus">
-                Your browser does not support the audio element
-            </audio>
-            <p>Fulghor, Champion of Nightglow</p>
-            <span style="padding-left: 2em;">mp3</span>
-            <audio controls>
-                <source src="fulghor3.mp3" type="audio/mpeg">
+                <source src="audio/fulghor3.opus" type="audio/ogg; codecs=opus">
                 Your browser does not support the audio element
             </audio>
             <br>
-            <span style="padding-left: 2em;">opus</span>
+            <h2 class="bold_white">Caligo, Miasma of Night</h2>
+            <span class="tabbed_large">mp3</span>
             <audio controls>
-                <source src="fulghor3.opus" type="audio/ogg; codecs=opus">
+                <source src="audio/caligo2.mp3" type="audio/mpeg">
                 Your browser does not support the audio element
             </audio>
+            <br>
+            <span class="tabbed_large">opus</span>
+            <audio controls>
+                <source src="audio/caligo2.opus" type="audio/ogg; codecs=opus">
+                Your browser does not support the audio element
+            </audio>
+            <hr>
+            <h1 class="tabbed_large">WIP - Will add later</h1>
             <hr>
         </main>
         <footer>
