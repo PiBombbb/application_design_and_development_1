@@ -8,13 +8,13 @@
     </head>
     <body>
         <header class="fancy_header">
-            <h1>Welcome to Jirapat Kiatchaipipat's</h1>
-            <h1>website that he put random stuff into</h1>
+            <h1>Welcome to Jirapat Kiatchaipipat's website</h1>
+            <h1>showing video and audio encoding via ffmpeg</h1>
         </header>
         <main>
-            <p>สวัสดีครับผม จิรภัทร เกียรติชัยพิพัฒน์ เลขที่ 10 ห้อง 6/3 เลขประจำตัว 09115 ไม่รู้จะเอาอะไรใส่เว็บดี</p>
+            <p>สวัสดีครับผม จิรภัทร เกียรติชัยพิพัฒน์ เลขที่ 10 ห้อง 6/3 เลขประจำตัว 09115 บางทีในเวลาว่างผมจะนำไฟล์ video หรือ audio มา encode ผ่านโปรแกรม ffmpeg</p>
             <hr>
-            <p>I sometimes like to encode videos! I use ffmpeg to turn videos into more efficient codecs, allowing for smaller file sizes.</p>
+            <p>ตัวอย่างการ Encode video รูปแบบคล้าย gif โดยใช้ libsvtav1 และ libwebp_anim ซึ่งใหม่กว่า</p>
             <a href="https://www.gyan.dev/ffmpeg/">
                 <img src="https://avatars.githubusercontent.com/u/729418" alt="FFmpeg logo" width="100" height="auto" class="ffmpeg_logo">
             </a>
@@ -30,6 +30,19 @@
                 <br>
                 <button id="simon_close" class="btn_close">Close</button>
             </dialog>
+            <hr>
+            <p>การแสดงไฟล์เสียงด้วย mp3 และ Opus เพื่อเทียบคุณภาพ</p>
+            <span>mp3</span>
+            <audio controls>
+                <source src="caligo2.mp3" type="audio/mpeg">
+                Your browser does not support the audio element
+            </audio>
+            <br>
+            <span>opus</span>
+            <audio controls>
+                <source src="caligo2.opus" type="audio/ogg; codecs=opus">
+                Your browser does not support the audio element
+            </audio>
             <hr>
             <h2>NASA Blue Marble Imagery Viewer</h2>
     
