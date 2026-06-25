@@ -17,7 +17,7 @@
             <hr>
             <div class="flex-container">
                 <a href="https://www.gyan.dev/ffmpeg/" class="tiny_link">
-                    <img src="https://avatars.githubusercontent.com/u/729418" alt="FFmpeg logo" width="100" height=auto class="ffmpeg_logo">
+                    <img src="https://avatars.githubusercontent.com/u/729418" alt="FFmpeg logo" width=120vw height=auto class="clickable_logo">
                     <br>
                     www.gyan.dev/ffmpeg/
                 </a>
@@ -59,53 +59,124 @@
                 <button id="avif_close" class="btn_close">Close</button>
             </dialog>
             <br><br>
-            <p>ตัวอย่างเพิ่มเติม AVIF ยาว 19.25 วินาที</p>
-            <button id="simon_open" class="btn">AVIF file - 1280x720 - 60fps - 3.62mb</button>
-            <dialog id="simon_anim">
-                <h2 class="bold_white">AVIF file - 1280x720 - 60fps - 3.62mb</h2>
-                <img src="anim/simon_avif_tiny.avif" alt="Simon the Divergent Star" width="854">
-                <br>
-                <span>Taken from </span>
-                <a href="https://youtu.be/hmmgy8jz7TY">https://youtu.be/hmmgy8jz7TY</a>
-                <span> and re-encoded to svt-av1 with CRF 53, VQ tune, Preset 2</span>
-                <br>
-                <button id="simon_close" class="btn_close">Close</button>
-            </dialog>
+            <span>
+                วีดิโอนำมาจาก
+                <a href="https://www.youtube.com/watch?v=fcGsJdc2NEM">www.youtube.com/watch?v=fcGsJdc2NEM</a>
+                โดยช่อง BonfireVN
+            </span>
+            <br><br>
             <hr>
             <p>การแสดงไฟล์เสียงด้วย mp3 และ Opus เพื่อเทียบคุณภาพ โดยมี bitrate ประมาณ 80kb/s</p>
-            
-            <h2 class="bold_white">Fulghor, Champion of Nightglow</h2>
-            <span class="tabbed_large">mp3</span>
-            <audio controls>
-                <source src="audio/fulghor3.mp3" type="audio/mpeg">
-                Your browser does not support the audio element
-            </audio>
+            <h2 class="bold_white">Tai Tomisawa - Fulghor, Champion of Nightglow</h2>
+            <div class="flex-container">
+                <span class="tabbed_large">mp3</span>
+                <audio controls>
+                    <source src="audio/fulghor3.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element
+                </audio>
+                <span class="tabbed_large">File size: 1.41mb</span>
+            </div>
             <br>
-            <span class="tabbed_large">opus</span>
-            <audio controls>
-                <source src="audio/fulghor3.opus" type="audio/ogg; codecs=opus">
-                Your browser does not support the audio element
-            </audio>
+            <div class="flex-container">
+                <span class="tabbed_large">opus</span>
+                <audio controls>
+                    <source src="audio/fulghor3.opus" type="audio/ogg; codecs=opus">
+                    Your browser does not support the audio element
+                </audio>
+                <span class="tabbed_large">File size: 1.34mb</span>
+            </div>
             <br>
-            <h2 class="bold_white">Caligo, Miasma of Night</h2>
-            <span class="tabbed_large">mp3</span>
-            <audio controls>
-                <source src="audio/caligo2.mp3" type="audio/mpeg">
-                Your browser does not support the audio element
-            </audio>
+            <h2 class="bold_white">Soma Tanizaki - Caligo, Miasma of Night</h2>
+            <div class="flex-container">
+                <span class="tabbed_large">mp3</span>
+                <audio controls>
+                    <source src="audio/caligo2.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element
+                </audio>
+                <span class="tabbed_large">File size: 1.17mb</span>
+            </div>
             <br>
-            <span class="tabbed_large">opus</span>
-            <audio controls>
-                <source src="audio/caligo2.opus" type="audio/ogg; codecs=opus">
-                Your browser does not support the audio element
-            </audio>
+            <div class="flex-container">
+                <span class="tabbed_large">opus</span>
+                <audio controls>
+                    <source src="audio/caligo2.opus" type="audio/ogg; codecs=opus">
+                    Your browser does not support the audio element
+                </audio>
+                <span class="tabbed_large">File size: 1.10mb</span>
+            </div>
             <hr>
-            <h1 class="tabbed_large">WIP - Will add later</h1>
+            <h1 class="bold_white">ปกติผมใช้ทำอะไร และ อุปกรณ์อื่นๆ</h1>
+            <div class="flex-container">
+                <p style="text-align:right;">
+                    บ่อยครั้งผมต้องการที่จะดาวน์โหลดวีดิโอต่างๆ จาก YouTube โดยมีคุณภาพสูง หลายๆคนอาจเคยใช้เว็บไซต์อื่นที่สามารถดาวน์โหลดวีดิโอได้ แต่ผมพบแอป command line คือ yt-dlp ซึ่ง
+                    ทำงานบนเครื่องของเราเอง ซึ่งทำงานด้วย Python และสามารถเลือกการดาวน์โหลดได้หลายแบบ เช่น ความละเอียดภาพ bitrate เสียง และเลือก codec ได้อีกด้วย คือ H.264 VP9 AV1 AAC ฟละ Opus
+                    นอกจากนี้ยัง support การใช้ร่วมกับ FFmpeg ทำให้สามารถ edit วีดิโอหรือเปลี่ยน codec หลังดาวน์โหลดได้เลย
+                </p>
+                <a href="https://github.com/yt-dlp/yt-dlp" class="tiny_link">
+                    <img src="https://avatars.githubusercontent.com/u/79589310" alt="yt-dlp logo" width=120vw height=auto class="clickable_logo">
+                    <br>
+                    github.com/yt-dlp/yt-dlp
+                </a>
+            </div>
+            <br><br>
+            <div class="nightreign_background">
+                <img src="https://media.fromsoftware.jp/nightreign/resources/images/top/pc/fv/background.jpg" alt="Nightreign Background" class="bg-image">
+                <div class="nightreign_content">
+                    <div class="flex-container">
+                        <a href="https://nightreign.eldenring.jp/">
+                            <img src="https://media.fromsoftware.jp/nightreign/resources/images/top/sp/movie/launchtrailer/thumb.webp" width=300vw class="clickable_logo" style="border: 2px solid snow;">
+                        </a>
+                        <p style="font-size: large;">
+                            บางครั้งผมก็สนใจการ extract ข้อมูลสื่อต่างๆ จากเกมที่สนใจ เช่น 
+                            <a href="https://nightreign.eldenring.jp/">Elden Ring Nightreign</a> 
+                            โดยเพลงตัวอย่างที่ใชในเว็บไซต์นี้ มาจากเกมนี้ โดยผมได้ทำการ extract ข้อมูลเมื่อหลายเดือนก่อน เนื่องจากเกมเพิ่งออกมา ทำให้ Soundtrack ไม่อยู่บน Spotify หรือ platform อิ่นๆ
+                            ผมจึงมีความสนใจในการ extract สื่อเพลง ออกมาจากเกมเอง
+                        </p>
+                    </div>
+                    <div class="flex-container">
+                        <p style="text-align: right;">
+                            หนึ่งในโปรแกรมที่สำคัญในการ Extract ข้อมูลจาก Elden Ring Nightreign คือ Nuxe โดย JKAnderson ซึ่งสามารถ unpack เกมออกเป็นไฟล์แยก ซึ่งยังคงถูก compress ใน format พิเศษอยู่ คือไฟล์ .bnk
+                        </p>
+                        <a href="https://github.com/JKAnderson/Nuxe" class="tiny_link">
+                            <img src="https://github.com/JKAnderson/Nuxe/raw/refs/heads/main/Nuxe/icon.ico" alt="Nuxe logo" class="clickable_logo" width=120vw height=auto>
+                            <br>
+                            github.com/JKAnderson/Nuxe
+                        </a>
+                    </div>
+                    <div class="flex-container">
+                        <a href="https://github.com/ividyon/WitchyBND" class="tiny_link">
+                            <img src="https://raw.githubusercontent.com/ividyon/WitchyBND/refs/heads/main/WitchyBND/Assets/icon.ico" alt="WitchyBND logo" class="clickable_logo" width=120vw height=auto>
+                            <br>
+                            github.com/ividyon/WitchyBND
+                        </a>
+                        <p>
+                            หลังจากแตกไฟล์ของเกมแล้ว ได้ไฟล์ที่บีบอัดแบบ .bnk ซึ่งหลังจากนั้นสามารถใช้โปรแกรม WitchyBND โดย ividyon เพื่อแตกไฟล์อีกครั้ง ได้เป็นไฟล์ .wem ซึ่งคือไฟล์เสียงแต่ใช้ codec เฉพาะทางสำหรับเกม ทำให้แอปส่วนใหญ่ไม่สามารถเล่นได้
+                        </p>
+                    </div>
+                    <div class="flex-container">
+                        <p style="text-align: right;">
+                            ขั้นตอนสุดท้ายในการ Extract เพลงเหล่านี้คือการใช้แอป command line อีกตัวคือ vgmstream ซึ่งสามารถแปล codec ที่เกมจำนวนมากใช้เป็น wav แทน ซึ่งเป็น format ที่ใช้บ่อยของไฟล์เสียง ทำให้สามารถเล่นได้ หรือใช้ ffmpeg เปลี่ยนเป็น codec อื่นต่อไปได้
+                        </p>
+                        <a href="https://vgmstream.org/" class="tiny_link">
+                            <img src="https://avatars.githubusercontent.com/u/73809257" alt="vgmstream logo" class="clickable_logo" width=120vw height=auto>
+                            <br>
+                            https://vgmstream.org/
+                        </a>
+                    </div>
+                    <div class="flex-container">
+                        <iframe width=240vs height=auto src="https://www.youtube.com/embed/YNhynsZ16Y0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        <p>
+                            หลังผ่านมาหลายเดือน Soundtrack ของเกมก็ปล่อยออกมา ทำให้เพลงส่วนใหญ่ที่ได้ Extract ออกมาไม่จำเป็นต้องใช้ เนื่องจากเพลงสามารถเล่นจาก streaming service ต่างๆ เช่น Spotify ได้แล้ว แต่ยังคงมีเพลงจำนวนน้อยบางเพลงที่ไม่ได้ถูกปล่อยออกมาอย่างเป็นทางการ
+                            ทำให้ยังคงมีบางไฟล์ที่ผมได้ Extract ออกมาที่ยังคงหาได้ยากอยู่ ทำให้ผมสามารถใช้ FFmpeg เพื่อรวมไฟล์เสียงเข้ากับรูปนิ่ง และอัปโหลดเข้า YouTube ซึ่งตอนนี้มียอกวิว 17.5k หลังผ่านมา 1 ปี
+                        </p>
+                    </div>
+                </div>
+                
+            </div>
             <hr>
         </main>
         <footer>
             <p>This is a footer idk what to put here</p>
-
         </footer>
         <script src="script.js"></script>
 </body>

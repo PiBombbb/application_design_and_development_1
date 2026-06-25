@@ -8,8 +8,6 @@ const open_button_webp = document.getElementById('webp_open');
 const close_button_webp = document.getElementById('webp_close');
 const open_button_avif = document.getElementById('avif_open');
 const close_button_avif = document.getElementById('avif_close');
-const open_button_simon = document.getElementById('simon_open');
-const close_button_simon = document.getElementById('simon_close');
 open_button_gif.addEventListener('click', () => {
     modal_gif.showModal();
 });
@@ -27,10 +25,4 @@ open_button_avif.addEventListener('click', () => {
 });
 close_button_avif.addEventListener('click', () => {
     modal_avif.close();
-});
-open_button_simon.addEventListener('click', () => {
-    modal_simon.showModal();
-});
-close_button_simon.addEventListener('click', () => {
-    modal_simon.close();
 });
