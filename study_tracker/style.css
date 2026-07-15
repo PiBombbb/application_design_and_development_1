@@ -1,7 +1,17 @@
 div.card {
-  background: white;
-  border: 2px solid #ddd6fe;
-  border-radius: 16px;
-  padding: 20px;
-  max-width: 460px;
+    background: white;
+    border: 2px solid #ddd6fe;
+    border-radius: 16px;
+    padding: 20px;
+    width: 95vw;
+}
+main {
+    justify-content: center;
+    display: flex;
+}
+.flex-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
 }
