@@ -1,0 +1,7 @@
+div.card {
+  background: white;
+  border: 2px solid #ddd6fe;
+  border-radius: 16px;
+  padding: 20px;
+  max-width: 460px;
+}
