@@ -10,41 +10,53 @@
         <main>
             <div class="card" style="width: 95vw;">
                 <h1>
-                    Study Planer (Very early WIP)
+                    Study Planer
                 </h1>
-                <div class="flex-container">
+                <div class="flex_container">
                     <div>
-                        <div class="card">
+                        <div class="card" style="width: 45vw;">
                             <p>Add in a new subject or select an existing one</p>
                             <section>
                                 <label for="subject-select">Subject:</label>
-                                <select id="subject-select"><!-- filled in by JS on page load --></select>
+                                <select id="subject-select"></select>
                                 <br>
                                 <label for="new-subject-input">Alternatively, Add a custom subject</label>
+                                <br>
                                 <input id="new-subject-input" type="text" placeholder="Add a custom subject">
                                 <button id="add-subject-btn">Add Subject</button>
                             </section>
                         </div>
                         <br>
                         <div class="card">
-                            <label for="minutes-input">Number of minutes studided: </label>
-                            <input id="minutes-input" type="number" placeholder="Time studied">
+                            <label for="minutes-input">Number of minutes studied: </label>
+                            <input id="minutes-input" type="number" placeholder="Time Studied">
+                        </div>
+                        <br>
+                        <div class="card">
+                            <label for="unit-input">Number of units read: </label>
+                            <input id="unit-input" type="number" placeholder="Units Read">
                         </div>
                         <br>
                         <button id="log-session-btn">
                             <h2>Log Session</h2>
                         </button>
                     </div>
-                    <div class="card"> 
+                    <div class="card" style="width: 35vw;"> 
                         <h2>Current Subjects</h2>
-                        <div class="scrollable_box">
-                            placeholder
+                        <div class="scrollable_box" id="subject-list">
+                            JavaScript Error - Did Not Render
                         </div>
                     </div>
                 </div>
-                <div class="flex-container">
+                <br><hr><br>
+                <div class="flex_container">
                     <h2>History</h2>
-                    <ul id="session-list"><!-- filled in by JS --></ul>
+                    <div class="scrollable_box" id="session-tracker" style="width: 40vw;">
+                        JavaScript Error - Did Not Render
+                    </div>
+                    <div class="scrollable_box" id="subject-calc" style="width: 40vw;">
+                        JavaScript Error - Did Not Render
+                    </div>
                 </div>
             </div>
         </main>

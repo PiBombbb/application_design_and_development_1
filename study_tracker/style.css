@@ -2,13 +2,13 @@ div.card {
     background: snow;
     border: 2px solid #ddd6fe;
     border-radius: 16px;
-    padding: 20px;
+    padding: 1vw;
 }
 .scrollable_box {
     background: ivory;
     border: 2px solid #ddd6fe;
-    border-radius: 16px;
-    padding: 24px;
+    border-radius: 5%;
+    padding: 2%;
     height: 50vh;
     overflow-y: scroll;
 }
@@ -16,9 +16,43 @@ main {
     justify-content: center;
     display: flex;
 }
-.flex-container {
+.flex_container {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 20px;
+    gap: 4vw;
+}
+.subject_row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    border: 2px solid gainsboro;
+    margin-bottom: 3%;
+    padding-left: 5%;
+    padding-right: 1%;
+}
+.session_row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.not_button {
+    margin-left: 3%;
+    padding: 3% 3%;
+    color: silver;
+    border-radius: 20%;
+}
+.subject_delete {
+    background-color: crimson; 
+    color: black;
+    border: none;
+    margin-left: 3%;
+    padding: 3% 3%;
+    border-radius: 20%;
+    cursor: pointer;
+}
+.subject_delete:hover {
+    background-color: red;
+    transform: scale(1.10);
 }
