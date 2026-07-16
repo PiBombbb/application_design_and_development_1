@@ -1,9 +1,16 @@
 div.card {
-    background: white;
+    background: snow;
     border: 2px solid #ddd6fe;
     border-radius: 16px;
     padding: 20px;
-    width: 95vw;
+}
+.scrollable_box {
+    background: ivory;
+    border: 2px solid #ddd6fe;
+    border-radius: 16px;
+    padding: 24px;
+    height: 50vh;
+    overflow-y: scroll;
 }
 main {
     justify-content: center;

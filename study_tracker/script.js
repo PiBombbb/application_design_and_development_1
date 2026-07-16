@@ -25,50 +25,50 @@ const sessionList = document.getElementById("session-list");
 // We do this any time the subject list changes, rather than trying to
 // track individual additions.
 function renderSubjectDropdown() {
-const allSubjects = presetSubjects.concat(customSubjects); // like Python's + for lists
-subjectSelect.innerHTML = ""; // clear existing options first
+    const allSubjects = presetSubjects.concat(customSubjects); // like Python's + for lists
+    subjectSelect.innerHTML = ""; // clear existing options first
 
-for (const subject of allSubjects) {
-const option = document.createElement("option");
-option.value = subject;
-option.textContent = subject;
-subjectSelect.appendChild(option);
-}
+    for (const subject of allSubjects) {
+        const option = document.createElement("option");
+        option.value = subject;
+        option.textContent = subject;
+        subjectSelect.appendChild(option);
+    }
 }
 
 // Rebuilds the visible history list from the `sessions` array.
 function renderSessionList() {
-sessionList.innerHTML = "";
-for (const session of sessions) {
-const li = document.createElement("li");
-li.textContent = `${session.subject} — ${session.minutes} min`;
-sessionList.appendChild(li);
-}
+    sessionList.innerHTML = "";
+    for (const session of sessions) {
+        const li = document.createElement("li");
+        li.textContent = `${session.subject} — ${session.minutes} min`;
+        sessionList.appendChild(li);
+    }
 }
 
 // --- 4. Event handlers ---
 addSubjectBtn.addEventListener("click", () => {
-const newSubject = newSubjectInput.value.trim(); // trim = strip whitespace
-if (newSubject === "") return; // ignore empty submissions
+    const newSubject = newSubjectInput.value.trim(); // trim = strip whitespace
+    if (newSubject === "") return; // ignore empty submissions
 
-customSubjects.push(newSubject); // add to our in-memory array
-localStorage.setItem("customSubjects", JSON.stringify(customSubjects)); // persist it
+    customSubjects.push(newSubject); // add to our in-memory array
+    localStorage.setItem("customSubjects", JSON.stringify(customSubjects)); // persist it
 
-newSubjectInput.value = ""; // clear the text box
-renderSubjectDropdown(); // refresh the dropdown so it shows up immediately
+    newSubjectInput.value = ""; // clear the text box
+    renderSubjectDropdown(); // refresh the dropdown so it shows up immediately
 });
 
 logSessionBtn.addEventListener("click", () => {
-const subject = subjectSelect.value;
-const minutes = Number(minutesInput.value); // convert the input STRING to a number
+    const subject = subjectSelect.value;
+    const minutes = Number(minutesInput.value); // convert the input STRING to a number
 
-if (!minutes || minutes <= 0) return; // basic validation
+    if (!minutes || minutes <= 0) return; // basic validation
 
-sessions.push({ subject: subject, minutes: minutes });
-localStorage.setItem("sessions", JSON.stringify(sessions));
+    sessions.push({ subject: subject, minutes: minutes });
+    localStorage.setItem("sessions", JSON.stringify(sessions));
 
-minutesInput.value = "";
-renderSessionList();
+    minutesInput.value = "";
+    renderSessionList();
 });
 
 // --- 5. Initial render on page load ---
