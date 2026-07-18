@@ -32,10 +32,40 @@ main {
     padding-left: 5%;
     padding-right: 1%;
 }
-.session_row {
+li.session_row {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    margin-top: 2%;
+}
+p.session_row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 3%;
+    font-weight: bolder;
+    font-size: medium;
+}
+p.session_columns {
+    display: flex;
+    align-items: center;
+    margin-bottom: 3%;
+    font-weight: bolder;
+    font-size: medium;
+}
+p.session_columns span {
+    flex: 1;              /* each column claims equal, fixed share of the row */
+    text-align: right;    /* numbers align cleanly on their right edge */
+}
+.session_row span {
+    flex: 1;              /* each column claims equal, fixed share of the row */
+    text-align: right;    /* numbers align cleanly on their right edge */
+}
+p.session_columns span.session_label {
+    flex: 1;
+    text-align: left;
+}
+span.session_label {
+    flex: 1;
+    text-align: left;
 }
 .not_button {
     margin-left: 3%;
@@ -52,7 +82,28 @@ main {
     border-radius: 20%;
     cursor: pointer;
 }
+button.session_delete {
+    background-color: crimson; 
+    color: black;
+    border: none;
+    margin-left: 10%;
+    padding: 2% 2%;
+    border-radius: 10%;
+    cursor: pointer;
+}
 .subject_delete:hover {
     background-color: red;
     transform: scale(1.10);
+}
+button.session_delete:hover {
+    background-color: red;
+    transform: scale(1.15);
+}
+div.session_delete {
+    opacity: 0;
+    border: none;
+    margin-left: 10%;
+    padding: 2% 2%;
+    border-radius: 10%;
+    cursor: pointer;
 }
