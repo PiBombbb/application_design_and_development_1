@@ -1,12 +1,18 @@
 // --- 1. Data setup ---
+// Presets you'll likely reuse a lot, since these are the subjects
+// you mentioned studying. This is just a plain JS array, like a Python list.
 const presetSubjects = ["Linear Algebra", "Physics", "Chemistry", "Biology", "Programming", "Liberal Arts", "Social Studies", "P.E."];
 console.log(presetSubjects);
+// We load any *saved* custom subjects and sessions from localStorage on
+// page load, so nothing is lost between visits.
+// localStorage.getItem returns a STRING (or null if the key was never set),
+// so we JSON.parse it back into a real array/object.
+// The `|| "[]"` means: "if getItem returned null, use the string '[]' instead"
+// so JSON.parse always has valid JSON to work with.
+let customSubjects = JSON.parse(localStorage.getItem("customSubjects") || "[]");
+let sessions = JSON.parse(localStorage.getItem("sessions") || "[]");
 
-// Initialize as empty arrays. We will populate these from Supabase.
-let customSubjects = [];
-let sessions = [];
-
-// --- 2. Grab references to the HTML elements ---
+// --- 2. Grab references to the HTML elements we'll need ---
 const subjectSelect = document.getElementById("subject-select");
 const newSubjectInput = document.getElementById("new-subject-input");
 const addSubjectBtn = document.getElementById("add-subject-btn");
@@ -17,14 +23,21 @@ const sessionList = document.getElementById("session-tracker");
 const subjectList = document.getElementById("subject-list");
 const subjectCalc = document.getElementById("subject-calc");
 
+
 const SUPABASE_URL = "https://joezzajidlsuegbantaw.supabase.co";
 const SUPABASE_KEY = "sb_publishable_BBVaqDKEKO5oJyfPmb2GNA_c4s-nASm";
-const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+const supabaseClient = supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY
+);
 
-// --- 3. Render functions (Unchanged) ---
+// --- 3. Render functions ---
+// Rebuilds the <select> dropdown from presetSubjects + customSubjects.
+// We do this any time the subject list changes, rather than trying to
+// track individual additions.
 function renderSubjectDropdown() {
-    const allSubjects = presetSubjects.concat(customSubjects);
-    subjectSelect.innerHTML = ""; 
+    const allSubjects = presetSubjects.concat(customSubjects); // like Python's + for lists
+    subjectSelect.innerHTML = ""; // clear existing options first
 
     for (const subject of allSubjects) {
         const option = document.createElement("option");
@@ -34,6 +47,7 @@ function renderSubjectDropdown() {
     }
 }
 
+// Rebuilds the visible history list from the `sessions` array.
 function renderSessionList() {
     sessionList.innerHTML = "";
     const li = document.createElement("p");
@@ -79,8 +93,8 @@ function renderSubjectList() {
     subjectList.innerHTML = "";
     const allSubjects = presetSubjects.concat(customSubjects);
     for (const subject of allSubjects) {
-        const item = document.createElement("div");        
-        const label = document.createElement("span");      
+        const item = document.createElement("div");        // the row container
+        const label = document.createElement("span");      // holds the subject name
         label.textContent = subject;
         item.className = "subject_row";
         label.className = "subject_label";
@@ -90,8 +104,9 @@ function renderSubjectList() {
             deleteBtn.textContent = "X";
             deleteBtn.dataset.subject = subject; 
             deleteBtn.className = "subject_delete";
+        
             item.appendChild(deleteBtn);
-        } else {
+        }else {
             const dfsubject = document.createElement("span");
             dfsubject.textContent = "Default Subject";
             dfsubject.className = "not_button";
@@ -108,15 +123,11 @@ function computeTotals() {
         totals[subject] = { minutes: Number(0), units: Number(0) };
     }
     for (const session of sessions) {
-        // Only aggregate if the subject still exists in our lists
-        if(totals[session.subject]) {
-            totals[session.subject].minutes += Number(session.minutes);
-            totals[session.subject].units += Number(session.units);
-        }
+        totals[session.subject].minutes += Number(session.minutes);
+        totals[session.subject].units += Number(session.units);
     }
     return totals;
 }
-
 function renderSubjectCalc() {
     subjectCalc.innerHTML = "";
     const totals = computeTotals();
@@ -136,10 +147,10 @@ function renderSubjectCalc() {
     item.appendChild(minutes);
     item.append(unpm);
     subjectCalc.appendChild(item);
-    
+    //console.log(totals);
     for (const [subject, data] of Object.entries(totals)) {
-        const item = document.createElement("li");        
-        const label = document.createElement("span");      
+        const item = document.createElement("li");        // the row container
+        const label = document.createElement("span");      // holds the subject name
         const minutes = document.createElement("span");
         const units = document.createElement("span");
         const unpm = document.createElement("span");
@@ -161,139 +172,79 @@ function renderSubjectCalc() {
     }
 }
 
-// --- 4. Database Initialization ---
-async function fetchInitialData() {
-    // 1. Fetch custom subjects
-    const { data: subjectData, error: subjectError } = await supabaseClient
-        .from('study_custom_subjects')
-        .select('subject_name');
-    
-    if (!subjectError && subjectData) {
-        customSubjects = subjectData.map(row => row.subject);
-    } else {
-        console.error("Failed to load subjects:", subjectError);
-    }
+// --- 4. Event handlers ---
+addSubjectBtn.addEventListener("click", () => {
+    const newSubject = newSubjectInput.value.trim(); // trim = strip whitespace
+    if (newSubject === "") return; // ignore empty submissions
 
-    // 2. Fetch sessions
-    const { data: sessionData, error: sessionError } = await supabaseClient
-        .from('main_study_tracker')
-        .select('*');
+    customSubjects.push(newSubject); // add to our in-memory array
+    localStorage.setItem("customSubjects", JSON.stringify(customSubjects)); // persist it
 
-    if (!sessionError && sessionData) {
-        sessions = sessionData;
-    } else {
-        console.error("Failed to load sessions:", sessionError);
-    }
-
-    // 3. Render everything now that data is loaded
-    renderSubjectDropdown();
-    renderSessionList();
-    renderSubjectList();
-    renderSubjectCalc();
-}
-
-// --- 5. Event handlers (Updated for Async Database logic) ---
-addSubjectBtn.addEventListener("click", async () => {
-    const newSubject = newSubjectInput.value.trim();
-    if (newSubject === "") return;
-
-    // Send to Supabase first
-    const { error } = await supabaseClient
-        .from('study_custom_subjects')
-        .insert([{ subject_name: newSubject }]);
-
-    if (error) {
-        console.error("Error saving subject:", error);
-        return; 
-    }
-
-    // Update Local memory and UI only if DB push succeeds
-    customSubjects.push(newSubject);
-    newSubjectInput.value = "";
-    renderSubjectDropdown(); 
+    newSubjectInput.value = ""; // clear the text box
+    renderSubjectDropdown(); // refresh the dropdown so it shows up immediately
     renderSubjectList();
     renderSubjectCalc();
 });
 
-logSessionBtn.addEventListener("click", async () => {
+logSessionBtn.addEventListener("click", () => {
     const subject = subjectSelect.value;
     const minutes = Number(minutesInput.value);
     const units_read = Number(unitsRead.value);
 
-    if (!minutes || minutes <= 0 || !units_read || units_read <= 0) return;
+    if (!minutes || minutes <= 0 || !units_read || units_read <= 0) return; // basic validation
 
-    const newSession = { 
-        uuid: crypto.randomUUID(), 
-        subject: subject, 
-        minutes: minutes, 
-        units: units_read 
-    };
+    sessions.push({ uuid: crypto.randomUUID(), subject: subject, minutes: minutes, units: units_read });
+    localStorage.setItem("sessions", JSON.stringify(sessions));
 
-    // Send to Supabase
-    const { error } = await supabaseClient
-        .from('main_study_tracker')
-        .insert([newSession]);
-
-    if (error) {
-        console.error("Error saving session:", error);
-        return;
-    }
-
-    // Update Local Memory & UI
-    sessions.push(newSession);
     minutesInput.value = "";
     unitsRead.value = "";
     renderSessionList();
     renderSubjectCalc();
 });
 
-subjectList.addEventListener("click", async (event) => {
+subjectList.addEventListener("click", (event) => {
+    // event.target = the exact element that was clicked
     if (event.target.tagName === "BUTTON") {
         const subjectToDelete = event.target.dataset.subject;
-
-        // Delete subject from Supabase
-        const { error: subjectError } = await supabaseClient
-            .from('study_custom_subjects')
-            .delete()
-            .eq('subject_name', subjectToDelete);
-
-        // Delete associated sessions from Supabase
-        await supabaseClient
-            .from('main_study_tracker')
-            .delete()
-            .eq('subject', subjectToDelete);
-
-        if (!subjectError) {
-            customSubjects = customSubjects.filter(subject => subject !== subjectToDelete);
-            sessions = sessions.filter(session => session.subject !== subjectToDelete);
-            
-            renderSubjectList();
-            subjectSelect.value = presetSubjects[0];
-            renderSubjectDropdown();
-            renderSessionList();
-            renderSubjectCalc();
-        }
+        customSubjects = customSubjects.filter(subject => subject !== subjectToDelete);
+        localStorage.setItem("customSubjects", JSON.stringify(customSubjects));
+        renderSubjectList();
+        subjectSelect.value = presetSubjects[0];
+        sessions = sessions.filter(session => session.subject !== subjectToDelete);
+        localStorage.setItem("sessions", JSON.stringify(sessions));
+        renderSubjectDropdown();
+        renderSessionList();
+        renderSubjectCalc();
     }
 });
-
-sessionList.addEventListener("click", async (event) => {
+sessionList.addEventListener("click", (event) => {
     if (event.target.tagName === "BUTTON") {
         const idToDelete = event.target.dataset.uuid;
-
-        // Delete from Supabase
-        const { error } = await supabaseClient
-            .from('main_study_tracker')
-            .delete()
-            .eq('uuid', idToDelete);
-
-        if (!error) {
-            sessions = sessions.filter(s => s.uuid !== idToDelete);
-            renderSessionList();
-            renderSubjectCalc();
-        }
+        sessions = sessions.filter(s => s.uuid !== idToDelete);
+        localStorage.setItem("sessions", JSON.stringify(sessions));
+        renderSessionList();
+        renderSubjectCalc();
     }
 });
+// 3. Test the connection by fetching data
+async function testConnection() {
+    // Replace 'your_table_name' with an actual table from your database
+    const { data, error } = await supabaseClient
+        .from('main_study_tracker')
+        .select('subject')
+        .limit(1)
 
-// --- 6. Initial render on page load ---
-// Replaces the immediate sync renders. This will fetch from DB, then render.
-fetchInitialData();
+    if (error) {
+        console.error('Connection failed:', error.message)
+    } else {
+        console.log('Connected successfully! Data:', data)
+    }
+}
+
+// Execute the test function
+testConnection()
+// --- 5. Initial render on page load ---
+renderSubjectDropdown();
+renderSessionList();
+renderSubjectList();
+renderSubjectCalc();
