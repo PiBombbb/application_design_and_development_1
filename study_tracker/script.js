@@ -34,6 +34,18 @@ function renderSubjectDropdown() {
     }
 }
 
+async function testConnection() {
+    // Replace 'your_table_name' with an actual table from your database
+    const { data, error } = await supabaseClient.from(
+        'main_study_tracker'
+    ).select('subject').limit(1)
+    if (error) {
+        console.error('Connection failed:', error.message)
+    } else {
+        console.log('Connected successfully! Data:', data)
+    }
+}
+
 function renderSessionList() {
     sessionList.innerHTML = "";
     const li = document.createElement("p");
@@ -293,7 +305,7 @@ sessionList.addEventListener("click", async (event) => {
         }
     }
 });
-
+testConnection();
 // --- 6. Initial render on page load ---
 // Replaces the immediate sync renders. This will fetch from DB, then render.
 fetchInitialData();
