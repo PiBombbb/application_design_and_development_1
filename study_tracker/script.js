@@ -181,7 +181,7 @@ async function fetchInitialData() {
         .select('subject_name');
     
     if (!subjectError && subjectData) {
-        customSubjects = subjectData.map(row => row.subject);
+        customSubjects = subjectData.map(row => row.subject_name);
     } else {
         console.error("Failed to load subjects:", subjectError);
     }
@@ -232,7 +232,7 @@ logSessionBtn.addEventListener("click", async () => {
     const minutes = Number(minutesInput.value);
     const units_read = Number(unitsRead.value);
 
-    if (!minutes || minutes <= 0 || !units_read || units_read <= 0) return;
+    if (!minutes || minutes <= 0 || !units_read || units_read <= 0 || !subject || subject === "undefined") return;
 
     const newSession = { 
         uuid: crypto.randomUUID(), 
