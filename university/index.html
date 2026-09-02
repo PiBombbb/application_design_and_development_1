@@ -11,12 +11,24 @@
     </head>
     <body>
         <header>
+            <button id="theme-toggle" aria-label="Toggle dark mode">🌙</button>
             <h1>University Application & Preparation Scheduler</h1>
             <aside>By Jirapat Kiatchaipipat 09115</aside>
         </header>
         <main>
             <div class="card">
-                Choose your username
+                <p id="user-greeting"></p>
+
+                <form id="username-form">
+                    <label for="username-input">Choose your username</label>
+                    <input type="text" id="username-input" placeholder="Enter Username" required>
+                    <button type="submit">Save</button>
+                </form>
+                <button id="change-username" hidden>Clear Username</button>
+            </div>
+            <hr>
+            <div class="card">
+                Main Table
             </div>
         </main>
         <script src="script.js"></script>
