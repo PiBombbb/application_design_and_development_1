@@ -1,0 +1,42 @@
+body {
+    margin: 5% auto;
+    background: #f2f2f2;
+    color: #444444;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.8;
+    text-shadow: 0 1px 0 #ffffff;
+    max-width: 73%;
+}
+
+code {
+    background: white;
+}
+
+a {
+    border-bottom: 1px solid #444444;
+    color: #444444;
+    text-decoration: none;
+}
+
+a:hover {
+    border-bottom: 0;
+}
+div.card {
+    background: snow;
+    border: 2px solid #ddd6fe;
+    border-radius: 16px;
+    padding: 1vw;
+}
+.scrollable_box {
+    background: ivory;
+    border: 2px solid #ddd6fe;
+    border-radius: 5%;
+    padding: 2%;
+    height: 50vh;
+    overflow-y: scroll;
+}
+main {
+    justify-content: center;
+    display: flex;
+}
