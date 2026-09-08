@@ -7,7 +7,7 @@ const userGreeting = document.getElementById('user-greeting');
 const changeUsernameBtn = document.getElementById('change-username');
 const saved = localStorage.getItem('theme');
 const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches; //Does system prefer dark?
-const startDark = saved ? saved === 'dark' : systemPrefersDark; //
+const startDark = saved ? saved === 'dark' : systemPrefersDark; //Condition for dark mode
 
 function applyTheme(isDark) {
     root.classList.toggle('dark', isDark);
