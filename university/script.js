@@ -3,7 +3,6 @@ const root = document.documentElement;
 const USERNAME_KEY = 'username';
 const usernameForm = document.getElementById('username-form');
 const usernameInput = document.getElementById('username-input');
-const userGreeting = document.getElementById('user-greeting');
 const changeUsernameBtn = document.getElementById('change-username');
 const saved = localStorage.getItem('theme');
 const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches; //Does system prefer dark?
