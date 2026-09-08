@@ -7,16 +7,18 @@
         <meta name="description" content="Jirapat's University Application & Preparation Scheduler for Application Design and Development Class "/>
         <link rel="stylesheet" href="style.css">
         <link rel="icon" type="image/x-icon" href="../icon.webp">
+        <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
         <link rel="canonical" href="https://pibombbb.github.io/main_application_design_and_development_09115/university/index.html"/>
     </head>
     <body>
         <header>
-            <button id="theme-toggle" aria-label="Toggle dark mode">Switch to Light Mode</button>
+            <button id="theme-toggle" aria-label="Toggle dark mode">Switch to Dark Mode</button>
             <h1>University Application & Preparation Scheduler</h1>
             <aside>By Jirapat Kiatchaipipat 09115</aside>
         </header>
         <main>
             <div class="card">
+                <p id="user-greeting">No Username Set</p>
 
                 <form id="username-form">
                     <label for="username-input">Choose your username</label>
@@ -28,6 +30,9 @@
             <hr>
             <div class="card">
                 Main Table
+                <div class="table" id="main-table">
+                    Fetching Data...
+                </div>
             </div>
         </main>
         <script src="script.js"></script>

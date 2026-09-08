@@ -56,6 +56,7 @@ body {
     color: var(--text-color);
 }
 #username-form button,
+#username-form input,
 #change-username {
     padding: 0.4rem 0.8rem;
     border-radius: 4px;
