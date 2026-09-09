@@ -2,11 +2,13 @@
     --bg-color: #f2f2f2;
     --text-color: #1a1a1a;
     --card-bg: #d9d9d9;
+    --table-bg: #f4f4f4;
 }
 html.dark {
     --bg-color: #121212;
     --text-color: #e1e1e1;
     --card-bg: #1e1e1e;
+    --table-bg: #0b0b0b;
 }
 
 body {
@@ -35,7 +37,7 @@ body {
     background: none;
     border: 1px solid var(--text-color);
     color: var(--text-color);
-    transition: border 0.2s ease, color 0.2s ease;
+    transition: border-color 0.2s ease, color 0.2s ease;
     border-radius: 10%;
     width: 7.5rem;
     height: 4.0rem;
@@ -63,6 +65,32 @@ body {
     border: 1px solid var(--text-color);
     background: var(--card-bg);
     color: var(--text-color);
-    transition: background-color 0.2s ease, color 0.2s ease, border 0.2s ease;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
     cursor: pointer;
+}
+.table {
+    background: var(--table-bg);
+    border: 1px solid var(--text-color);
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+    border-radius: 5%;
+    padding: 2%;
+    height: 50vh;
+    overflow-y: scroll;
+}
+
+.table::-webkit-scrollbar {
+    width: 10px;
+    background: var(--table-bg);
+    transition: background-color 0.2s ease;
+}
+
+.table::-webkit-scrollbar-track {
+    background: var(--table-bg);
+    transition: background-color 0.2s ease;
+}
+
+.table::-webkit-scrollbar-thumb {
+    background: var(--text-color);
+    transition: background-color 0.2s ease;
+    border-radius: 10px;
 }

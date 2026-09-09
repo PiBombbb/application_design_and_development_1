@@ -40,6 +40,7 @@ function renderUserState() {
     const hasUser = Boolean(username);
     usernameForm.hidden = hasUser;
     changeUsernameBtn.hidden = !hasUser;
+    usernameInput.value = username;
 
     if (hasUser) {
         userGreeting.textContent = `Current Username: ${username}`;
@@ -71,7 +72,7 @@ async function fetchData() {
     if (!rowError && rowData) {
         rows = rowData;
     } else {
-        console.error("Failed to load min table:", rowError);
+        console.error("Failed to load main table:", rowError);
     }
     //add render functions here to render after
 }
